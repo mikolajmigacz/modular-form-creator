@@ -1,23 +1,14 @@
-import styled from 'styled-components'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { RouterProvider } from 'react-router-dom'
+import { queryClient } from './query-client'
+import { appRouter } from './router'
 
 function App() {
   return (
-    <AppShell>
-      <Message>Good luck!</Message>
-    </AppShell>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={appRouter} />
+    </QueryClientProvider>
   )
 }
-
-const AppShell = styled.div`
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Message = styled.h1`
-  font-size: 2.5rem;
-  color: ${({ theme }) => theme.colors.inkStrong};
-`
 
 export default App
